@@ -63,18 +63,12 @@ public class PrizeServiceImpl implements PrizeService {
 	}
 
 	@Override
-	public Prize DeleteById(Prize prize, int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void DeleteById(int id) {
+		
+		prizeRepository.findById(id);		
+		prizeRepository.deleteById(id);
+		
 	}
-
-
-
-
-
-
-
-
 	
 	
 }

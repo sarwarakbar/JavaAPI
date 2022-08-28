@@ -20,8 +20,7 @@ public interface PrizeService {
 	
 	Iterable<Prize> saveAll(List<Prize> prizes);
 	
-	Prize DeleteById(Prize prize, int id);
-	
+	void DeleteById(int id);	
 	
 	List<Prize> findAllByOrderByYearAsc();
 	

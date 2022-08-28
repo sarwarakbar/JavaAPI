@@ -14,7 +14,7 @@ public class Prize {
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JsonIgnore
+	//@JsonIgnore
 	private int id;
 	
 	

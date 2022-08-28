@@ -56,15 +56,7 @@ public class HomeController {
 	  public ResponseEntity<Prize> UpdatePrize(@PathVariable("id")int id, @RequestBody Prize prize){
 		 return new ResponseEntity<Prize>(service.Update(prize, id), HttpStatus.OK);
 	 }
-		
-	
-	/*@DeleteMapping
-	public Prize DeletePrize(Prize prize, int id) {
-		service.DeleteById(prize);
-		return prize;
-	}*/
-	 
-	 
+			 
 	@GetMapping("/project")
 	public String GetName() {
 	return "Hi! This is Sarwar. Now the new project has been started";
@@ -77,5 +69,13 @@ public class HomeController {
 		return data;
 
 	}	
+	
+	@DeleteMapping("/prize/{id}")
+	public ResponseEntity<String> deletePrize(@PathVariable("id") int id){
+		service.DeleteById(id);
+		return new ResponseEntity<String>("Prize Deleted Successfully!.", HttpStatus.OK);
+		
+	}
+	
 	  
 }
