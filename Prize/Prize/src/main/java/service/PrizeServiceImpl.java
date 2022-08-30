@@ -2,9 +2,13 @@ package service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import entity.Laureate;
 import entity.Prize;
 
+import repository.LaureateRepository;
 import repository.PrizeRepository;
 
 
@@ -14,6 +18,9 @@ public class PrizeServiceImpl implements PrizeService {
 
 	@Autowired
 	private PrizeRepository prizeRepository;
+	
+	@Autowired
+	private LaureateRepository laureateRepository;
 	
 	public List<Prize> findAll(){
     	//return (List<Prize>) prizeRepository.findAll();
@@ -69,6 +76,29 @@ public class PrizeServiceImpl implements PrizeService {
 		prizeRepository.deleteById(id);
 		
 	}
+
+	@Override
+	public List<Laureate> findByfirstname(String firstname) {
+	
+		return laureateRepository.findByfirstname(firstname);
+	}
+
+	@Override
+	public List<Laureate> findByshare(String share) {
+		
+		return laureateRepository.findByshare(share);
+	}
+
 	
 	
+	public List<Prize> findByCategoryOrYearOrLaureates_Firstname(String name, String category, String year){
+		List<Prize> prizes = prizeRepository.findByCategoryOrYearOrLaureates_Firstname(name, category, year);
+		//to do
+		//Play after single JPA call and perform necessary sorting based on name/year and
+		//number of share per prize, using stream API..		
+		return prizes;
+	}
+
+
 }
+

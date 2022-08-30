@@ -1,7 +1,6 @@
 package entity;
 
 import javax.persistence.*;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,8 +18,10 @@ public class Laureate {
 	@Column
     private String firstname;
 	@Column
-    private String surname;    
-    @Column
+    private String surname;   
+	
+	@Lob
+    @Column( length = 100000 )
     private String motivation;
     @Column
     private String share;   
